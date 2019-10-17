@@ -1,0 +1,11 @@
+<div class="enzo">
+<h1>user information</h1>
+<% @user.each do |user| %>
+      <div class="users-index-item">
+      	<div class="image_name"> 
+      	<img src="<%= "/user_images/#{user.image_name}" %>">
+      </div>      
+      <%= link_to(user.name,"/users/#{user.id}")%>
+      </div>
+  </div>
+    <% end %>

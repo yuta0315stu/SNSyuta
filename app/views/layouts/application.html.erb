@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+
+    <title>WebApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<link rel="stylesheet" href="stylesheet.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      
+      <ul>
+
+      <div class="all">
+        <li><%= link_to("posts list","/posts/index") %></li>
+      </div>
+      <div class="webSNS">
+        <li><%= link_to("webapp","/") %></li>
+        <div class="newpost">
+          <li><%= link_to("newpost","/posts/new") %></li>
+        </div>
+        <div class="detail">
+          <li><%= link_to("user","/users/index") %></li>
+        </div>
+        <div class="newuser">
+          <li><%= link_to("signup","/signup") %></li>
+        </div>
+      </ul>
+  
+    </header>
+   <% if flash[:notice] %>
+    <div class="flash">
+    <%= flash[:notice] %>
+    </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
