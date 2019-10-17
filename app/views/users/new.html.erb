@@ -1,0 +1,14 @@
+<div class="user singup">
+<%= form_tag("/users/create",{multipart: true}) do %>
+<% @user.errors.full_messages.each do |message| %>
+ <%= message %>
+ <% end %> 
+<p>user name</p>
+<input name="name" value="<%= @user.name %>">
+<p>user email</p>
+<input name="email" value="<%= @user.email %>">
+<p>image</p>
+<input name="image" type="file" >
+<input type="submit" value="singup">
+<% end %>
+</div>

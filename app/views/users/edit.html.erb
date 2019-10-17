@@ -1,0 +1,12 @@
+<%= form_tag("/users/#{@user.id}/update",{multipart: true}) do %>
+ <% @user.errors.full_messages.each do |message| %>
+ <%= message %>
+ <% end %> 
+ <p>user name</p>
+<input name="name" value="<%= @user.name %>">
+<p>user email</p>
+<input name="email" value="<%= @user.email %>">
+<p>image</p>
+<input type="file" name="image">
+<input type="submit" value="reupload">
+ <% end %>
