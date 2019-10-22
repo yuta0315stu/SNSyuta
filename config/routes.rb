@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  Rails.application.routes.draw do
+   resources :home
+   root 'home#top'
+ end
   
   get 'posts/index' => "posts#index"
   get "posts/new" => "posts#new"
