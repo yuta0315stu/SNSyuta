@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+ .image_name img{
+	width:100px;
+	hight:100px;
+	border-radius: 30px;
+}
+.ppost {
+	 padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+.signup_1{
+	 text-align: right;
+}
+.post-right{
+	margin-top: 50px;
+}
+.posts-index-item{
+	position: relative;
+top: 100px;
+}
+.yes{
+	text-align: right;
+}
+.users-index-item{
+	margin-bottom: 100px;
+}

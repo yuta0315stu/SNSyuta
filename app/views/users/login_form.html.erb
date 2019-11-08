@@ -1,0 +1,15 @@
+<%= form_tag("/login") do %>
+<div class="signup_1">
+<p>name</p>
+<input name="name" value="<%= @name %>">
+<P>password</P>
+<input type="password" name="password">
+<input type="submit" value="log in">
+</div>
+<% end %>
+<% if @error_massage %>
+<div class="error_massage">
+	<%= @error_massage %>
+</div>
+<% end %>
+	

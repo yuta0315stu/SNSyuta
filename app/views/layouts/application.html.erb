@@ -13,25 +13,36 @@
 
   <body>
     <header>
-      
+       <div class="webSNS">
+        <li><%= link_to("webapp","/") %></li>
+      <% if @current_user %>
+
+      <li>you are <%= link_to("#{@current_user.name}","/users/#{@current_user.id}") %></li>
       <ul>
 
       <div class="all">
         <li><%= link_to("posts list","/posts/index") %></li>
       </div>
-      <div class="webSNS">
-        <li><%= link_to("webapp","/") %></li>
+     
         <div class="newpost">
           <li><%= link_to("newpost","/posts/new") %></li>
         </div>
         <div class="detail">
           <li><%= link_to("user","/users/index") %></li>
         </div>
-        <div class="newuser">
+         <div clss="logout">
+           <li><%= link_to("logout","/logout",{method: :post}) %></li>
+         </div> 
+        </div>
+       <% else %> 
+       <div class="newuser">
           <li><%= link_to("signup","/signup") %></li>
+        
+        <div class="login">
+          <li><%= link_to("login","/login") %></li>
         </div>
       </ul>
-  
+      <% end %>
     </header>
    <% if flash[:notice] %>
     <div class="flash">

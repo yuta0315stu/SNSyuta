@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user,{only:[:edit,:index,:show]}
+  before_action :forbid_current, {only: [:new,  :login_form,]}
+  before_action :confirm,{only:[:edit,]}
   def index
   	@user=User.all
   end
@@ -12,7 +15,8 @@ class UsersController < ApplicationController
   	@user=User.new(
   		name: params[:name],
   		email: params[:email],
-  		image_name: "jellyfish-698521_960_720.jpg"
+      password: params[:password],
+  		image_name: "roe-4589923_1920.jpg"
   		)
   	 if params[:image]	
   	@user.image_name ="#{@user.id}.jpg"
@@ -20,6 +24,7 @@ class UsersController < ApplicationController
   	File.binwrite("publinc/user_images/#{@user.image_name}",image.read)
   end
   	if @user.save
+      session[:user_id] = @user.id
   		redirect_to("/users/#{@user.id}")
  	else 		
  		render("users/new")
@@ -44,4 +49,27 @@ class UsersController < ApplicationController
   	render("users/edit")
   end
   end
+  def login_form
+  end
+  def login
+    @user=User.find_by(name: params[:name],
+                        password: params[:password])
+    if @user
+      session[:user_id] = @user.id
+      flash[:notice] = "you log in"
+      redirect_to("/posts/index")
+    else
+      @error_massage = "somthing wrong"
+      @name= params[:name]
+      @password=params[:password]
+      render("users/login_form")
+    end
+  end
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "logout"
+    redirect_to("/")
+  end
 end
+
+
